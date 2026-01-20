@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NetGuard – Wi-Fi Security Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🔐 NetGuard</h1>
+  <p>Analyze the security of your current network</p>
+</header>
+
+<main class="card">
+  <div id="results">
+    <p id="https"></p>
+    <p id="ip"></p>
+    <p id="isp"></p>
+    <p id="vpn"></p>
+  </div>
+
+  <div class="score">
+    <h2 id="score"></h2>
+    <p id="rating"></p>
+  </div>
+
+  <details>
+    <summary>⚠️ What this tool cannot see</summary>
+    <p>
+      For privacy and security reasons, browsers cannot access your Wi-Fi
+      password, router encryption type, or scan nearby networks.
+    </p>
+  </details>
+</main>
+
+<footer>
+  <p>Built by Anuj Vanga</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
