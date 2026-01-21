@@ -42,9 +42,39 @@ function finalizeScore() {
   document.getElementById("score").innerText =
     `Security Score: ${score}/100`;
 
-  let rating = "High Risk";
-  if (score >= 80) rating = "Secure";
-  else if (score >= 60) rating = "Moderate Risk";
+  const explanation = document.getElementById("explanation");
+  const recs = document.getElementById("recommendations");
+  recs.innerHTML = "";
 
-  document.getElementById("rating").innerText = rating;
+  if (score >= 80) {
+    explanation.innerHTML =
+      "<span class='safe'>Your network appears secure.</span> " +
+      "Traffic is encrypted and no major exposure risks were detected.";
+
+    ["Continue using HTTPS websites",
+     "Avoid unknown public Wi-Fi networks",
+     "Keep your OS and browser updated"]
+     .forEach(r => recs.innerHTML += `<li>${r}</li>`);
+
+  } else if (score >= 60) {
+    explanation.innerHTML =
+      "<span class='warn'>Your network has moderate risk.</span> " +
+      "Some indicators suggest potential exposure.";
+
+    ["Use a VPN on public or shared Wi-Fi",
+     "Avoid logging into sensitive accounts",
+     "Verify website certificates"]
+     .forEach(r => recs.innerHTML += `<li>${r}</li>`);
+
+  } else {
+    explanation.innerHTML =
+      "<span class='danger'>High risk network detected.</span> " +
+      "Your connection may be vulnerable to monitoring or attacks.";
+
+    ["Disconnect from this network if possible",
+     "Use a trusted VPN immediately",
+     "Avoid entering passwords or payment info",
+     "Switch to mobile data if available"]
+     .forEach(r => recs.innerHTML += `<li>${r}</li>`);
+  }
 }
