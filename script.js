@@ -26,7 +26,33 @@ fetch("https://ipapi.co/json/")
     }
 
     // VPN heuristic
-    if (data.org.toLowerCase().includes("vpn")) {
+   fetch("https://ipapi.co/json/")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("ip").innerHTML =
+      `Public IP: <span class='warn'>${data.ip}</span>`;
+
+    document.getElementById("isp").innerHTML =
+      `Network Provider: <span class='warn'>${data.org}</span>`;
+
+    let vpnDetected = false;
+
+    const vpnKeywords = [
+      "vpn", "proxy", "hosting", "cloud",
+      "digitalocean", "linode", "ovh",
+      "amazon", "aws", "google", "azure",
+      "mullvad", "nord", "express", "surfshark"
+    ];
+
+    const org = (data.org || "").toLowerCase();
+
+    vpnKeywords.forEach(keyword => {
+      if (org.includes(keyword)) {
+        vpnDetected = true;
+      }
+    });
+
+    if (vpnDetected) {
       document.getElementById("vpn").innerHTML =
         "VPN Detected: <span class='safe'>Yes</span>";
     } else {
@@ -35,7 +61,13 @@ fetch("https://ipapi.co/json/")
       score -= 20;
     }
 
+    // Public / shared network heuristic
+    if (org.includes("school") || org.includes("public")) {
+      score -= 10;
+    }
+
     finalizeScore();
+
   });
 
 function finalizeScore() {
