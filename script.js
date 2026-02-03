@@ -25,9 +25,14 @@ fetch("https://ipapi.co/json/")
       score -= 15;
     }
 
-    // VPN heuristic
-   fetch("https://ipapi.co/json/")
-  .then(res => res.json())
+  // IP + ISP + VPN (ONE fetch only)
+fetch("https://ipapi.co/json/")
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("IP API blocked");
+    }
+    return res.json();
+  })
   .then(data => {
     document.getElementById("ip").innerHTML =
       `Public IP: <span class='warn'>${data.ip}</span>`;
@@ -35,8 +40,14 @@ fetch("https://ipapi.co/json/")
     document.getElementById("isp").innerHTML =
       `Network Provider: <span class='warn'>${data.org}</span>`;
 
-    let vpnDetected = false;
+    const org = (data.org || "").toLowerCase();
 
+    // Public/shared network heuristic
+    if (org.includes("school") || org.includes("public")) {
+      score -= 15;
+    }
+
+    // VPN heuristic
     const vpnKeywords = [
       "vpn", "proxy", "hosting", "cloud",
       "digitalocean", "linode", "ovh",
@@ -44,29 +55,30 @@ fetch("https://ipapi.co/json/")
       "mullvad", "nord", "express", "surfshark"
     ];
 
-    const org = (data.org || "").toLowerCase();
-
-    vpnKeywords.forEach(keyword => {
-      if (org.includes(keyword)) {
-        vpnDetected = true;
-      }
-    });
+    let vpnDetected = vpnKeywords.some(k => org.includes(k));
 
     if (vpnDetected) {
       document.getElementById("vpn").innerHTML =
-        "VPN Detected: <span class='safe'>Yes</span>";
+        "VPN Detected: <span class='safe'>Likely</span>";
     } else {
       document.getElementById("vpn").innerHTML =
-        "VPN Detected: <span class='warn'>No</span>";
+        "VPN Detected: <span class='warn'>Not detected</span>";
       score -= 20;
     }
 
-    // Public / shared network heuristic
-    if (org.includes("school") || org.includes("public")) {
-      score -= 10;
-    }
+    finalizeScore();
+  })
+  .catch(() => {
+    document.getElementById("ip").innerHTML =
+      "<span class='danger'>IP info unavailable</span>";
+    document.getElementById("isp").innerHTML =
+      "<span class='danger'>Network analysis blocked</span>";
+    document.getElementById("vpn").innerHTML =
+      "<span class='warn'>VPN detection unavailable</span>";
 
     finalizeScore();
+  });
+
 
   });
 
