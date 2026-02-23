@@ -11,6 +11,7 @@
 <header>
   <h1>🔐 NetGuard</h1>
   <p>Analyze the security of your current network</p>
+  <p>Analyze your current network safety</p>
 </header>
 
 <main class="card">
@@ -20,6 +21,9 @@
     <p id="isp"></p>
     <p id="vpn"></p>
   </div>
+  <form id="wifi-form" class="input-grid">
+    <label for="ssid">Wi-Fi name (SSID)</label>
+    <input id="ssid" name="ssid" type="text" placeholder="e.g. HomeNetwork_5G">
 
   <div class="score">
     <h2 id="score"></h2>
@@ -28,15 +32,47 @@
   <p id="explanation"></p>
   <ul id="recommendations"></ul>
 </div>
+    <label for="security">Wi-Fi security type</label>
+    <select id="security" name="security">
+      <option value="unknown">Unknown</option>
+      <option value="open">Open (No password)</option>
+      <option value="wep">WEP</option>
+      <option value="wpa">WPA/WPA2 (Personal)</option>
+      <option value="wpa3">WPA3</option>
+    </select>
 
+    <button type="submit">Analyze Network</button>
+  </form>
+
+  <section id="results" class="results">
+    <p id="wifi-name"></p>
+    <p id="wifi-security"></p>
+    <p id="https-status"></p>
+    <p id="ip-status"></p>
+    <p id="isp-status"></p>
+    <p id="vpn-status"></p>
+  </section>
+
+  <div class="score">
+    <h2 id="security-score"></h2>
     <p id="rating"></p>
+  </div>
+
+  <div class="analysis">
+    <h3>🧠 Security Analysis</h3>
+    <p id="explanation"></p>
+    <ul id="recommendations"></ul>
   </div>
 
   <details>
     <summary>⚠️ What this tool cannot see</summary>
+    <summary>⚠️ Important limits</summary>
     <p>
       For privacy and security reasons, browsers cannot access your Wi-Fi
       password, router encryption type, or scan nearby networks.
+      Browsers cannot directly read your real router encryption settings, Wi-Fi password,
+      or guaranteed VPN state. NetGuard combines safe browser checks, public IP data,
+      and your selected Wi-Fi type to estimate risk.
     </p>
   </details>
 </main>
