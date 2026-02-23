@@ -21,11 +21,53 @@ header {
   width: 90%;
   max-width: 500px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  max-width: 640px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .safe { color: #22c55e; }
 .warn { color: #facc15; }
 .danger { color: #ef4444; }
+.input-grid {
+  display: grid;
+  gap: 10px;
+}
+
+input,
+select,
+button {
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: white;
+  padding: 10px;
+  font-size: 0.95rem;
+}
+
+button {
+  background: #2563eb;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.results {
+  margin-top: 18px;
+}
+
+.safe {
+  color: #22c55e;
+}
+.warn {
+  color: #facc15;
+}
+.danger {
+  color: #ef4444;
+}
 
 .score {
   text-align: center;
@@ -41,6 +83,7 @@ footer {
   margin: 30px 0;
   opacity: 0.6;
 }
+
 .analysis {
   margin-top: 25px;
   background: #020617;
@@ -58,4 +101,3 @@ footer {
   margin-bottom: 6px;
   font-size: 0.9rem;
 }
-
