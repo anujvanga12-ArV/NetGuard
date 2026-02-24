@@ -46,7 +46,3 @@ ul {
 .safe { color: #00ff99; }
 .warning { color: #ffcc00; }
 .danger { color: #ff4d4d; }
-
-details {
-  cursor: pointer;
-}
