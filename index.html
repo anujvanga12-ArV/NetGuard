@@ -23,7 +23,21 @@
   </div>
   <section class="controls">
     <button id="analyze-btn" type="button">Analyze Current Connection</button>
-    <p class="helper">NetGuard auto-detects what your browser can safely access, then explains risks and fixes.</p>
+    <p class="helper">Click analyze to detect your current network, risk score, VPN likelihood, and practical fixes.</p>
+    <p id="last-updated" class="helper"></p>
+  </section>
+
+  <section id="results" class="results">
+    <p class="result-row"><span class="label">Wi-Fi Name (SSID):</span> <span id="wifi-name">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">Wi-Fi Security:</span> <span id="wifi-security">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">VPN Status:</span> <span id="vpn-status">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">HTTPS Status:</span> <span id="https-status">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">App Address:</span> <span id="app-address">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">Public IP Address:</span> <span id="public-ip">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">Local IP Address(es):</span> <span id="local-ip">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">ISP / Location:</span> <span id="provider">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">Network Profile:</span> <span id="network-profile">Not analyzed yet</span></p>
+    <p class="result-row"><span class="label">Device Profile:</span> <span id="device-profile">Not analyzed yet</span></p>
   </section>
 
   <div class="score">
@@ -33,29 +47,18 @@
   <p id="explanation"></p>
   <ul id="recommendations"></ul>
 </div>
-  <section id="results" class="results">
-    <p id="wifi-name"></p>
-    <p id="wifi-security"></p>
-    <p id="vpn-status"></p>
-    <p id="https-status"></p>
-    <p id="app-address"></p>
-    <p id="public-ip"></p>
-    <p id="local-ip"></p>
-    <p id="provider"></p>
-    <p id="network-profile"></p>
-    <p id="device-profile"></p>
-  </section>
-
-  <div class="score">
-    <h2 id="security-score"></h2>
-    <p id="rating"></p>
+    <h2 id="security-score">Security Score: --/100</h2>
+    <p id="rating">Overall Rating: Pending</p>
   </div>
 
+    <p id="rating"></p>
   <div class="analysis">
     <h3>🧠 Why this score?</h3>
-    <p id="explanation"></p>
+    <p id="explanation">Run an analysis to see why your connection is rated this way.</p>
     <h3>🛠️ What to improve</h3>
-    <ul id="recommendations"></ul>
+    <ul id="recommendations">
+      <li>Click Analyze Current Connection to generate personalized recommendations.</li>
+    </ul>
   </div>
 
   <details>
