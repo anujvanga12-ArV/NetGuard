@@ -19,47 +19,58 @@ header {
   padding: 30px;
   margin-top: 30px;
   width: 90%;
-  max-width: 640px;
+  max-width: 760px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
-.input-grid {
+.controls {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
-input,
-select,
 button {
   border-radius: 8px;
-  border: 1px solid #334155;
-  background: #0b1220;
-  color: white;
-  padding: 10px;
-  font-size: 0.95rem;
-}
-
-button {
-  background: #2563eb;
   border: none;
+  background: #2563eb;
+  color: white;
+  padding: 12px;
+  font-size: 0.98rem;
   cursor: pointer;
-  margin-top: 4px;
 }
 
 button:hover {
   background: #1d4ed8;
 }
 
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.helper {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
 .results {
-  margin-top: 18px;
+  margin-top: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.results p {
+  margin: 0;
 }
 
 .safe {
   color: #22c55e;
 }
+
 .warn {
   color: #facc15;
 }
+
 .danger {
   color: #ef4444;
 }
@@ -67,16 +78,6 @@ button:hover {
 .score {
   text-align: center;
   margin-top: 20px;
-}
-
-details {
-  margin-top: 20px;
-  font-size: 0.9rem;
-}
-
-footer {
-  margin: 30px 0;
-  opacity: 0.6;
 }
 
 .analysis {
@@ -87,6 +88,10 @@ footer {
   border-radius: 10px;
 }
 
+.analysis h3 {
+  margin: 8px 0;
+}
+
 .analysis ul {
   margin-top: 10px;
   padding-left: 20px;
@@ -95,4 +100,14 @@ footer {
 .analysis li {
   margin-bottom: 6px;
   font-size: 0.9rem;
+}
+
+details {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+footer {
+  margin: 30px 0;
+  opacity: 0.6;
 }
