@@ -21,7 +21,7 @@ header {
   width: 90%;
   max-width: 500px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-  max-width: 760px;
+  max-width: 820px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
@@ -59,7 +59,7 @@ button:disabled {
 
 .helper {
   margin: 0;
-  opacity: 0.8;
+  opacity: 0.85;
   font-size: 0.9rem;
 }
 
@@ -69,11 +69,17 @@ footer {
 .results {
   margin-top: 20px;
   display: grid;
-  gap: 6px;
+  gap: 8px;
 }
 
-.results p {
+.result-row {
   margin: 0;
+  line-height: 1.4;
+}
+
+.label {
+  color: #cbd5e1;
+  font-weight: 600;
 }
 
 .safe {
