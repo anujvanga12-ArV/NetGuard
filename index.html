@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>NetGuard – Wi-Fi Security Analyzer</title>
+  <title>NetGuard – Wi‑Fi Security Analyzer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +12,7 @@
 <header>
   <h1>🔐 NetGuard</h1>
   <p>Analyze the security of your current network</p>
-  <p>Auto-detect network details and score your connection security</p>
+  <p>Check if your current Wi‑Fi is safe, why, and how to fix it.</p>
 </header>
 
 <main class="card">
@@ -21,24 +22,6 @@
     <p id="isp"></p>
     <p id="vpn"></p>
   </div>
-  <section class="controls">
-    <button id="analyze-btn" type="button">Analyze Current Connection</button>
-    <p class="helper">Click analyze to detect your current network, risk score, VPN likelihood, and practical fixes.</p>
-    <p id="last-updated" class="helper"></p>
-  </section>
-
-  <section id="results" class="results">
-    <p class="result-row"><span class="label">Wi-Fi Name (SSID):</span> <span id="wifi-name">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">Wi-Fi Security:</span> <span id="wifi-security">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">VPN Status:</span> <span id="vpn-status">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">HTTPS Status:</span> <span id="https-status">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">App Address:</span> <span id="app-address">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">Public IP Address:</span> <span id="public-ip">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">Local IP Address(es):</span> <span id="local-ip">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">ISP / Location:</span> <span id="provider">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">Network Profile:</span> <span id="network-profile">Not analyzed yet</span></p>
-    <p class="result-row"><span class="label">Device Profile:</span> <span id="device-profile">Not analyzed yet</span></p>
-  </section>
 
   <div class="score">
     <h2 id="score"></h2>
@@ -47,30 +30,60 @@
   <p id="explanation"></p>
   <ul id="recommendations"></ul>
 </div>
-    <h2 id="security-score">Security Score: --/100</h2>
-    <p id="rating">Overall Rating: Pending</p>
-  </div>
 
     <p id="rating"></p>
-  <div class="analysis">
-    <h3>🧠 Why this score?</h3>
-    <p id="explanation">Run an analysis to see why your connection is rated this way.</p>
-    <h3>🛠️ What to improve</h3>
-    <ul id="recommendations">
-      <li>Click Analyze Current Connection to generate personalized recommendations.</li>
-    </ul>
   </div>
+  <section class="topbar">
+    <button id="analyze-btn" type="button">Analyze My Connection</button>
+    <p id="last-updated" class="muted">Ready to scan.</p>
+  </section>
+
+  <section class="score-strip">
+    <h2 id="security-score">--/100</h2>
+    <p id="rating">Tap Analyze</p>
+  </section>
+
+  <section class="grid">
+    <article class="panel">
+      <h3>Connection</h3>
+      <p><span class="label">Wi‑Fi Name</span><span id="wifi-name">Not analyzed</span></p>
+      <p><span class="label">Wi‑Fi Security</span><span id="wifi-security">Not analyzed</span></p>
+      <p><span class="label">VPN</span><span id="vpn-status">Not analyzed</span></p>
+      <p><span class="label">HTTPS</span><span id="https-status">Not analyzed</span></p>
+    </article>
+
+    <article class="panel">
+      <h3>Addresses & Network</h3>
+      <p><span class="label">App Address</span><span id="app-address">Not analyzed</span></p>
+      <p><span class="label">Public IP</span><span id="public-ip">Not analyzed</span></p>
+      <p><span class="label">Local IP(s)</span><span id="local-ip">Not analyzed</span></p>
+      <p><span class="label">ISP / Location</span><span id="provider">Not analyzed</span></p>
+    </article>
+
+    <article class="panel full">
+      <h3>Useful Extra Info</h3>
+      <p><span class="label">Network Profile</span><span id="network-profile">Not analyzed</span></p>
+      <p><span class="label">Device Profile</span><span id="device-profile">Not analyzed</span></p>
+    </article>
+  </section>
+
+  <section class="analysis panel full">
+    <h3>Why this score</h3>
+    <p id="explanation">We’ll explain the exact risk after analysis.</p>
+    <h3>How to improve this Wi‑Fi</h3>
+    <ul id="recommendations">
+      <li>Click Analyze My Connection.</li>
+    </ul>
+  </section>
 
   <details>
     <summary>⚠️ What this tool cannot see</summary>
-    <summary>⚠️ Browser limits</summary>
     <p>
       For privacy and security reasons, browsers cannot access your Wi-Fi
       password, router encryption type, or scan nearby networks.
-      Browsers usually cannot directly read your router's real encryption mode (WPA2/WPA3), Wi-Fi password,
-      or guaranteed VPN state. NetGuard uses safe signals (network APIs, HTTPS, and IP intelligence) and marks
-      uncertain fields clearly.
     </p>
+    <summary>Browser limits</summary>
+    <p>Some browsers hide exact router encryption (WPA2/WPA3), SSID, or VPN state. NetGuard uses safe browser signals and labels uncertain items clearly.</p>
   </details>
 </main>
 
